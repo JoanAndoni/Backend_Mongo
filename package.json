@@ -1,15 +1,14 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Template backend by Joan Andoni",
+  "description": "Template Mongo backend by Joan Andoni",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon --exec babel-node index"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JoanAndoni/MEAN-BackendTemplate.git"
+    "url": "git+https://github.com/JoanAndoni/Backend_Mongo.git"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
