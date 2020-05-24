@@ -4,9 +4,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import passport from 'passport';
 import mongoose from 'mongoose';
-import * as database from './config/database';
+import * as config from './config/variables';
 
-mongoose.connect(database.url, {
+mongoose.connect(config.databaseUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -33,7 +33,7 @@ const users = require('./routes/users');
 app.use('/users', users);
 
 app.get('/', (req, res) => {
-    res.send('Invalid Endpoint');
+    res.status(400).send('Invalid Endpoint');
 });
 
 app.get('*', (req, res) => {
