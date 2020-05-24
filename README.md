@@ -1,1 +1,1 @@
-# MEAN-BackendTemplate
+# Backend Mongo Auth Template
