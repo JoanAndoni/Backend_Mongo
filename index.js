@@ -4,9 +4,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import passport from 'passport';
 import mongoose from 'mongoose';
-import * as config from './config/database';
+import * as database from './config/database';
 
-mongoose.connect(config.database, {
+mongoose.connect(database.url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
@@ -29,7 +29,8 @@ import passportFunction from './config/passport';
 passportFunction(passport);
 
 // Routes
-// app.use('/users', users);
+const users = require('./routes/users');
+app.use('/users', users);
 
 app.get('/', (req, res) => {
     res.send('Invalid Endpoint');

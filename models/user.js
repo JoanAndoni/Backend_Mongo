@@ -1,10 +1,8 @@
 import mongoose from 'mongoose';
 import bcrypt from 'bcryptjs';
+const saltRounds = 10;
 
 const UserSchema = mongoose.Schema({
-    name: {
-        type: String
-    },
     username: {
         type: String,
         required: true
@@ -29,12 +27,10 @@ module.exports.getUserByUsername = (username, callback) => {
 }
 
 module.exports.addUser = (newUser, callback) => {
-    bcrypt.genSalt(10, (err, salt) => {
-        bcrypt.hash(newUser.password, salt, (err, hash) => {
-            if (err) throw err;
-            newUser.password = hash;
-            newUser.save(callback);
-        });
+    bcrypt.hash(newUser.password, saltRounds, (err, hash) => {
+        if (err) throw err;
+        newUser.password = hash;
+        newUser.save(callback);
     });
 }
 
