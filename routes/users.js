@@ -56,7 +56,8 @@ router.post('/authenticate', (req, res, next) => {
         User.comparePassword(password, user.password, (err, isMatch) => {
             if (err) throw err;
             if (isMatch) {
-                const token = jwt.sign(user.toJSON(), config.secret, {
+                // Make the json of the user fields to encode //
+                const token = jwt.sign(user.toJSON(), process.env.SECRET, {
                     expiresIn: JWT_duration * 60
                 });
                 res.status(202).json({

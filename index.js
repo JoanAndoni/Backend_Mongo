@@ -4,9 +4,9 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import passport from 'passport';
 import mongoose from 'mongoose';
-import * as config from './config/variables';
+require('dotenv').config()
 
-mongoose.connect(config.databaseUrl, {
+mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
