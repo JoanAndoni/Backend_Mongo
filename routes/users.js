@@ -7,7 +7,6 @@
 import { Router } from 'express';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
-import * as config from '../config/variables';
 import User from '../models/user';
 const JWT_duration = 0.5; // Minutes
 
