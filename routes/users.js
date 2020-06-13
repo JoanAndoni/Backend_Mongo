@@ -8,6 +8,7 @@ import { Router } from 'express';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
+import { sendEmail } from '../services/mailing';
 const JWT_duration = 0.5; // Minutes
 
 const router = Router();
@@ -84,5 +85,18 @@ router.get('/profile', passport.authenticate('jwt', { session: false }),
             username: req.user.username
         });
     });
+
+
+router.post('/mail/testing', async (req, res, next) => {
+    const data = {
+        email: 'mcr_joan@hotmail.com',
+        name: 'Nombre'
+    }
+    const email = await sendEmail(1, data, true);
+    return res.status(200).json({
+        success: true,
+        msg: `Mail sent`
+    });
+});
 
 module.exports = router;
